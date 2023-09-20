@@ -7,28 +7,28 @@ public class Configuration {
 		Properties props = new Properties();
 
 		// HTTP_Signature = http_signature and JWT = jwt
-		props.setProperty("authenticationType", "http_signature");
-		props.setProperty("merchantID", "testrest");
+		props.setProperty("authenticationType", "jwt");
+		props.setProperty("merchantID", "chrisphua1");
 		props.setProperty("runEnvironment", "apitest.cybersource.com");
-		props.setProperty("requestJsonPath", "src/main/resources/request.json");
+//		props.setProperty("requestJsonPath", "src/main/resources/request.json");
 
 		// MetaKey Parameters
-		props.setProperty("portfolioID", "");
+//		props.setProperty("portfolioID", "");
 		props.setProperty("useMetaKey", "false");
 
 		// JWT Parameters
-		props.setProperty("keyAlias", "testrest");
-		props.setProperty("keyPass", "testrest");
-		props.setProperty("keyFileName", "testrest");
+		props.setProperty("keyAlias", "chrisphua1");
+		props.setProperty("keyPass", "chrisphua1");
+		props.setProperty("keyFileName", "chrisphua1");
 
 		// P12 key path. Enter the folder path where the .p12 file is located.
 
 		props.setProperty("keysDirectory", "src/main/resources");
 		// HTTP Parameters
-		props.setProperty("merchantKeyId", "08c94330-f618-42a3-b09d-e1e43be5efda");
-		props.setProperty("merchantsecretKey", "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=");
+//		props.setProperty("merchantKeyId", "08c94330-f618-42a3-b09d-e1e43be5efda");
+//		props.setProperty("merchantsecretKey", "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=");
 		// Logging to be enabled or not.
-		props.setProperty("enableLog", "true");
+//		props.setProperty("enableLog", "true");
 		// Log directory Path
 		props.setProperty("logDirectory", "log");
 		props.setProperty("logFilename", "cybs");
@@ -39,10 +39,10 @@ public class Configuration {
 		// OAuth related properties.
 		props.setProperty("enableClientCert", "false");
 		props.setProperty("clientCertDirectory", "src/main/resources");
-		props.setProperty("clientCertFile", "");
-		props.setProperty("clientCertPassword", "");
-		props.setProperty("clientId", "");
-		props.setProperty("clientSecret", "");
+//		props.setProperty("clientCertFile", "");
+//		props.setProperty("clientCertPassword", "");
+//		props.setProperty("clientId", "");
+//		props.setProperty("clientSecret", "");
 
 		return props;
 

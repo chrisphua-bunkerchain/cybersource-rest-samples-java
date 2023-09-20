@@ -21,7 +21,7 @@ public class SimpleAuthorizationInternet {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
-	public static boolean userCapture = false;
+	public static boolean userCapture = true;
 
 	public static void WriteLogAudit(int status) {
 		String filename = MethodHandles.lookup().lookupClass().getSimpleName();
