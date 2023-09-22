@@ -16,6 +16,11 @@
 		</repository>
 	</repositories>
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>2.7.14</version>
+		</dependency>
 		<!-- rest client dependency -->
 		<dependency>
 			<groupId>com.cybersource</groupId>
