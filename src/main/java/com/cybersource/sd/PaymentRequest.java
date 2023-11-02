@@ -1,15 +1,24 @@
 package com.cybersource.sd;
 
-import Model.*;
+import Model.Ptsv2paymentsClientReferenceInformation;
+import Model.Ptsv2paymentsOrderInformationAmountDetails;
+import Model.Ptsv2paymentsOrderInformationBillTo;
+import Model.Ptsv2paymentsPaymentInformationCard;
 
 public class PaymentRequest {
+    private String merchantId;
     private Ptsv2paymentsPaymentInformationCard paymentInformationCard;
-    
     private Ptsv2paymentsOrderInformationAmountDetails orderInformationAmountDetails;
-
     private Ptsv2paymentsClientReferenceInformation clientReferenceInformation;
-
     private Ptsv2paymentsOrderInformationBillTo orderInformationBillTo;
+
+    public String getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(String merchantId) {
+        this.merchantId = merchantId;
+    }
 
     public Ptsv2paymentsPaymentInformationCard getPaymentInformationCard() {
         return paymentInformationCard;
@@ -18,7 +27,7 @@ public class PaymentRequest {
     public void setPaymentInformationCard(Ptsv2paymentsPaymentInformationCard paymentInformationCard) {
         this.paymentInformationCard = paymentInformationCard;
     }
-    
+
     public Ptsv2paymentsOrderInformationAmountDetails getOrderInformationAmountDetails() {
         return orderInformationAmountDetails;
     }

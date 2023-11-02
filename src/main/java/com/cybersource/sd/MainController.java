@@ -16,21 +16,21 @@ import java.util.Properties;
 
 @RestController
 public class MainController {
-    @GetMapping("/greeting")
-    public String greeting() {
-        return "Greetings from Cybersource!";
-    }
-
+    public static boolean userCapture = true;
     private static String responseCode = null;
     private static String status = null;
     private static Properties merchantProp;
-    public static boolean userCapture = true;
 
     public static void WriteLogAudit(int status) {
         String filename = MethodHandles.lookup().lookupClass().getSimpleName();
         System.out.println("[Sample Code Testing] [" + filename + "] " + status);
     }
-    
+
+    @GetMapping("/greeting")
+    public String greeting() {
+        return "Greetings from Cybersource!";
+    }
+
     @PostMapping("/simpleAuthorizationInternet")
     public PtsV2PaymentsPost201Response simpleAuthorizationInternet(@RequestBody PaymentRequest paymentRequest) {
         CreatePaymentRequest requestObj = new CreatePaymentRequest();
@@ -66,6 +66,7 @@ public class MainController {
         orderInformationBillTo.firstName(paymentRequest.getOrderInformationBillTo().getFirstName());
         orderInformationBillTo.lastName(paymentRequest.getOrderInformationBillTo().getLastName());
         orderInformationBillTo.address1(paymentRequest.getOrderInformationBillTo().getAddress1());
+        orderInformationBillTo.address2(paymentRequest.getOrderInformationBillTo().getAddress2());
         orderInformationBillTo.locality(paymentRequest.getOrderInformationBillTo().getLocality());
         orderInformationBillTo.administrativeArea(paymentRequest.getOrderInformationBillTo().getAdministrativeArea());
         orderInformationBillTo.postalCode(paymentRequest.getOrderInformationBillTo().getPostalCode());
@@ -78,7 +79,7 @@ public class MainController {
 
         PtsV2PaymentsPost201Response result = null;
         try {
-            merchantProp = Configuration.getMerchantDetails();
+            merchantProp = Configuration.getMerchantDetails(paymentRequest.getMerchantId());
             ApiClient apiClient = new ApiClient();
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
             apiClient.merchantConfig = merchantConfig;
