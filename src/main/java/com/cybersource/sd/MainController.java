@@ -5,7 +5,9 @@ import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
+import com.cybersource.authsdk.core.ConfigException;
 import com.cybersource.authsdk.core.MerchantConfig;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,19 +22,14 @@ public class MainController {
     private static String responseCode = null;
     private static String status = null;
     private static Properties merchantProp;
-
-    public static void WriteLogAudit(int status) {
-        String filename = MethodHandles.lookup().lookupClass().getSimpleName();
-        System.out.println("[Sample Code Testing] [" + filename + "] " + status);
-    }
-
+    
     @GetMapping("/greeting")
     public String greeting() {
         return "Greetings from Cybersource!";
     }
 
     @PostMapping("/simpleAuthorizationInternet")
-    public PtsV2PaymentsPost201Response simpleAuthorizationInternet(@RequestBody PaymentRequest paymentRequest) {
+    public ResponseEntity simpleAuthorizationInternet(@RequestBody PaymentRequest paymentRequest) throws Exception {
         CreatePaymentRequest requestObj = new CreatePaymentRequest();
 
         Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
@@ -49,11 +46,12 @@ public class MainController {
 
         Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
         Ptsv2paymentsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsPaymentInformationCard();
-        paymentInformationCard.number(paymentRequest.getPaymentInformationCard().getNumber());
+        paymentInformationCard.number(paymentRequest.getPaymentInformationCard().getNumber().replaceAll("\\s+",""));
         paymentInformationCard.expirationMonth(paymentRequest.getPaymentInformationCard().getExpirationMonth());
         paymentInformationCard.expirationYear(paymentRequest.getPaymentInformationCard().getExpirationYear());
+        if (paymentRequest.getPaymentInformationCard().getType() != null) paymentInformationCard.type(paymentRequest.getPaymentInformationCard().getType());
+        if (paymentRequest.getPaymentInformationCard().getSecurityCode() != null) paymentInformationCard.securityCode(paymentRequest.getPaymentInformationCard().getSecurityCode());
         paymentInformation.card(paymentInformationCard);
-
         requestObj.paymentInformation(paymentInformation);
 
         Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
@@ -89,17 +87,14 @@ public class MainController {
 
             responseCode = apiClient.responseCode;
             status = apiClient.status;
-            System.out.println("ResponseCode :" + responseCode);
-            System.out.println("ResponseMessage :" + status);
-            System.out.println(result);
-            WriteLogAudit(Integer.parseInt(responseCode));
-
+            
+            return ResponseEntity.ok(result);
         } catch (ApiException e) {
             e.printStackTrace();
-            WriteLogAudit(e.getCode());
-        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getResponseBody());
+        } catch (ConfigException e) {
             e.printStackTrace();
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
-        return result;
     }
 }
