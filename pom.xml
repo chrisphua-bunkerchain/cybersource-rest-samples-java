@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cybersource.sample</groupId>
-	<artifactId>SampleCode</artifactId>
+	<artifactId>cybersource-rest-samples-java</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0</version>
-	<name>SampleCode</name>
+	<version>0.0.1</version>
+	<name>cybersource-rest-samples-java</name>
 	<url>http://maven.apache.org</url>
 	<repositories>
 		<repository>
@@ -97,12 +97,12 @@
 			  <artifactId>maven-jar-plugin</artifactId>
 			  <version>3.1.2</version>
 			  <configuration>
-			  	<finalName>SampleCode</finalName>
+			  	<finalName>cybersource-rest-samples-java</finalName>
 			    <archive>
 			      <manifest>
 			        <addClasspath>true</addClasspath>
                 	<classpathPrefix>libs/</classpathPrefix>
- 			        <mainClass>samples.core.SampleCodeRunner</mainClass>
+ 			        <mainClass>com.cybersource.sd.MainApplication</mainClass>
 			      </manifest>
 			    </archive>
 			  </configuration>

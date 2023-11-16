@@ -3,3 +3,4 @@ log
 logs
 .idea
 *.p12
+*.out
