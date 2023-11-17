@@ -1,0 +1,5 @@
+gp:
+  endpoint: apitest.cybersource.com
+  key-directory: src/main/resources
+  
+  

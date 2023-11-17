@@ -1,12 +1,12 @@
 package com.cybersource.sd;
 
 import Api.PaymentsApi;
-import Data.Configuration;
 import Invokers.ApiClient;
 import Invokers.ApiException;
 import Model.*;
 import com.cybersource.authsdk.core.ConfigException;
 import com.cybersource.authsdk.core.MerchantConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +22,9 @@ public class MainController {
     private static String responseCode = null;
     private static String status = null;
     private static Properties merchantProp;
+    
+    @Autowired
+    private Configuration configuration;
     
     @GetMapping("/greeting")
     public String greeting() {
@@ -77,7 +80,7 @@ public class MainController {
 
         PtsV2PaymentsPost201Response result = null;
         try {
-            merchantProp = Configuration.getMerchantDetails(paymentRequest.getMerchantId());
+            merchantProp = configuration.getMerchantDetails(paymentRequest.getMerchantId());
             ApiClient apiClient = new ApiClient();
             MerchantConfig merchantConfig = new MerchantConfig(merchantProp);
             apiClient.merchantConfig = merchantConfig;
