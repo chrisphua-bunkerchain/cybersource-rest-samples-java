@@ -55,8 +55,8 @@ public class Configuration {
         props.setProperty("logMaximumSize", "5M");
 
         // OAuth related properties.
-        props.setProperty("enableClientCert", "false");
-        props.setProperty("clientCertDirectory", "src/main/resources");
+//        props.setProperty("enableClientCert", "false");
+//        props.setProperty("clientCertDirectory", "src/main/resources");
 //		props.setProperty("clientCertFile", "");
 //		props.setProperty("clientCertPassword", "");
 //		props.setProperty("clientId", "");

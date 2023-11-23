@@ -27,6 +27,12 @@
 			<artifactId>cybersource-rest-client-java</artifactId>
 			<version>0.0.56</version>
 		</dependency>
+		<!--	sdk java	-->
+		<dependency>
+			<groupId>com.cybersource</groupId>
+			<artifactId>cybersource-sdk-java</artifactId>
+			<version>6.2.13</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>
 		    <groupId>com.google.guava</groupId>
