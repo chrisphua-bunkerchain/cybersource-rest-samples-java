@@ -171,7 +171,7 @@ public class MainController {
         }
     }
 
-    @PostMapping("/simpleOrder/authAndCapture")
+    @PostMapping("/simpleOrder/sale")
     public ResponseEntity authAndCapture(@RequestBody SimplePaymentRequest simplePaymentRequest) throws Exception {
         HashMap<String, String> requestMap = new HashMap<String, String>();
         requestMap.put("ccAuthService_run", "true");
