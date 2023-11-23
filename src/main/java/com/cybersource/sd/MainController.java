@@ -186,7 +186,6 @@ public class MainController {
         requestMap.put("billTo_postalCode", simplePaymentRequest.getPostalCode());
         requestMap.put("billTo_country", simplePaymentRequest.getCountry());
         requestMap.put("billTo_email", simplePaymentRequest.getEmail());
-        requestMap.put("billTo_ipAddress", simplePaymentRequest.getIpAddress());
         requestMap.put("billTo_phoneNumber", simplePaymentRequest.getPhoneNumber());
         requestMap.put("card_accountNumber", simplePaymentRequest.getAccountNumber());
         requestMap.put("card_expirationMonth", simplePaymentRequest.getExpirationMonth());
