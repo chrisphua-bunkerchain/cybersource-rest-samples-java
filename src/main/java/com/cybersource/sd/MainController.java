@@ -191,6 +191,8 @@ public class MainController {
         requestMap.put("card_accountNumber", simplePaymentRequest.getAccountNumber());
         requestMap.put("card_expirationMonth", simplePaymentRequest.getExpirationMonth());
         requestMap.put("card_expirationYear", simplePaymentRequest.getExpirationYear());
+        requestMap.put("card_cardType", simplePaymentRequest.getCardType());
+        requestMap.put("card_cvNumber", simplePaymentRequest.getCvNumber());
         requestMap.put("purchaseTotals_currency", simplePaymentRequest.getCurrency());
         requestMap.put("purchaseTotals_grandTotalAmount", simplePaymentRequest.getGrandTotalAmount());
 

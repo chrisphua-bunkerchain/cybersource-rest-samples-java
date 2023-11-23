@@ -1,25 +1,6 @@
 package com.cybersource.sd;
 
 public class SimplePaymentRequest {
-    private String merchantId;
-    private String merchantReferenceCode;
-    private String firstName;
-    private String lastName;
-    private String street1;
-    private String street2;
-    private String city;
-    private String state;
-    private String postalCode;
-    private String country;
-    private String email;
-    private String ipAddress;
-    private String phoneNumber;
-    private String accountNumber;
-    private String expirationMonth;
-    private String expirationYear;
-    private String currency;
-    private String grandTotalAmount;
-
     public String getMerchantId() {
         return merchantId;
     }
@@ -132,6 +113,22 @@ public class SimplePaymentRequest {
         this.accountNumber = accountNumber;
     }
 
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
+    }
+
+    public String getCvNumber() {
+        return cvNumber;
+    }
+
+    public void setCvNumber(String cvNumber) {
+        this.cvNumber = cvNumber;
+    }
+
     public String getExpirationMonth() {
         return expirationMonth;
     }
@@ -163,4 +160,25 @@ public class SimplePaymentRequest {
     public void setGrandTotalAmount(String grandTotalAmount) {
         this.grandTotalAmount = grandTotalAmount;
     }
+
+    private String merchantId;
+    private String merchantReferenceCode;
+    private String firstName;
+    private String lastName;
+    private String street1;
+    private String street2;
+    private String city;
+    private String state;
+    private String postalCode;
+    private String country;
+    private String email;
+    private String ipAddress;
+    private String phoneNumber;
+    private String accountNumber;
+    private String cardType;
+    private String cvNumber;
+    private String expirationMonth;
+    private String expirationYear;
+    private String currency;
+    private String grandTotalAmount;
 }
