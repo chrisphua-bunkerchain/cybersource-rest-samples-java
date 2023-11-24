@@ -7,6 +7,13 @@ import java.util.Properties;
 @org.springframework.context.annotation.Configuration
 public class Configuration {
 
+    public String getActiveProfile() {
+        return activeProfile;
+    }
+    
+    @Value("${spring.profiles.active}")
+    private String activeProfile;
+
     public String getKeyDirectory() {
         return keyDirectory;
     }

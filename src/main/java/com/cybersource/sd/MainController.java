@@ -196,7 +196,7 @@ public class MainController {
         requestMap.put("purchaseTotals_grandTotalAmount", simplePaymentRequest.getGrandTotalAmount());
 
         Properties merchantProperties = new Properties();
-        InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(simplePaymentRequest.getMerchantId() +".properties");
+        InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(simplePaymentRequest.getMerchantId() + "." + configuration.getActiveProfile() + ".properties");
         if (in == null) {
             throw new RuntimeException("Unable to load " + simplePaymentRequest.getMerchantId() + ".properties file");
         }
